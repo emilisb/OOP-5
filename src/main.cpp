@@ -39,8 +39,7 @@ std::wstring toLower(std::wstring word) {
     return result;
 }
 
-int main()
-{
+int main() {
     setlocale(LC_ALL, LOCALE_TYPE);
     
     std::multimap<std::wstring, unsigned int> words;
