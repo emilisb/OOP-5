@@ -24,7 +24,7 @@
 
 ## Pavyzdinis rezultatas
 
-`
+```
 Links:
 https://www.delfi.lt/news/ringas/lit/rimvydas-valatka-renta-seimo-nariams-1-grieztas-ne-ir-kokie-5-ukiski-taip.d?id=81413083
 
@@ -89,6 +89,6 @@ vertus - used 2 times in lines: 16 17
 vieną - used 2 times in lines: 11 22
 yra - used 5 times in lines: 2 12 13 16 23
 į - used 7 times in lines: 8 9 12 16 17 17 24
-`
+```
 
 [version-badge]: https://img.shields.io/badge/version-1.0-green.svg
