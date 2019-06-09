@@ -26,8 +26,8 @@ bool isNotAlpha(const unsigned wchar_t &c) {
 
 bool isUrl(const std::wstring &word) {
     return std::regex_match(word, std::wregex(
-                                             L"^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?"
-                                             ));
+                                              L"^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?"
+                                              ));
 }
 
 std::wstring toLower(std::wstring word) {
@@ -42,12 +42,14 @@ std::wstring toLower(std::wstring word) {
 int main()
 {
     setlocale(LC_ALL, LOCALE_TYPE);
+    
     std::multimap<std::wstring, unsigned int> words;
     std::vector<std::wstring> urls;
     
-    std::wstring line;
     std::wifstream input("data/text.txt", std::ios::binary);
     input.imbue(LOCALE);
+    
+    std::wstring line;
     unsigned int lineNum = 1;
     
     while (std::getline(input, line)) {
@@ -72,16 +74,17 @@ int main()
     
     std::wofstream output("data/output.txt");
     output.imbue(LOCALE);
+    
     output << "Links:" << std::endl;
     for (const auto &url : urls) {
         output << url << std::endl;
     }
-    
     output << std::endl;
     
     for (auto it = words.begin(), end = words.end(); it != end; it = words.upper_bound(it->first)) {
         const auto word = it->first;
         const auto count = words.count(word);
+        
         if (count > 1) {
             output << word << " - used " << count << " times in lines:";
             auto wordRange = words.equal_range(word);
